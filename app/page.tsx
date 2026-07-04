@@ -72,8 +72,19 @@ export default function Home() {
     }
   ];
 
-  // Travel inspiration images
-  const travelImages = ["picVer1.jpg", "picVer2.jpg", "picVer3.jpg", "picVer4.jpg","picVer5.jpg"];
+  // Travel inspiration images - 10 images
+  const travelImages = [
+    "picVer1.jpg", 
+    "picVer2.jpg", 
+    "picVer3.jpg", 
+    "picVer4.jpg",
+    "picVer5.jpg",
+    "picVer6.jpg",
+    "picVer7.jpg",
+    "picVer8.jpg",
+    "picVer9.jpg",
+    "picVer10.jpg"
+  ];
   
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [currentInspirationIndex, setCurrentInspirationIndex] = useState<number>(0);
@@ -115,15 +126,17 @@ export default function Home() {
   };
 
   // Travel inspiration navigation
+  const totalSlides = travelImages.length - itemsPerPage + 1;
+
   const nextInspiration = (): void => {
     setCurrentInspirationIndex((prev) => 
-      (prev + 1) % (travelImages.length - itemsPerPage + 1)
+      (prev + 1) % totalSlides
     );
   };
 
   const prevInspiration = (): void => {
     setCurrentInspirationIndex((prev) => 
-      (prev - 1 + (travelImages.length - itemsPerPage + 1)) % (travelImages.length - itemsPerPage + 1)
+      (prev - 1 + totalSlides) % totalSlides
     );
   };
 
@@ -400,7 +413,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TRAVEL INSPIRATION - Updated with Slideshow */}
+      {/* TRAVEL INSPIRATION - Updated with 10 Images */}
       <section className="py-24 px-6 md:px-20">
         <h2 className="text-center text-4xl mb-12 tracking-wide">
           TRAVEL INSPIRATION
@@ -424,8 +437,8 @@ export default function Home() {
             onClick={nextInspiration}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition z-10"
             aria-label="Next images"
-            disabled={currentInspirationIndex >= travelImages.length - itemsPerPage}
-            style={{ opacity: currentInspirationIndex >= travelImages.length - itemsPerPage ? 0.3 : 1 }}
+            disabled={currentInspirationIndex >= totalSlides - 1}
+            style={{ opacity: currentInspirationIndex >= totalSlides - 1 ? 0.3 : 1 }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -457,12 +470,12 @@ export default function Home() {
 
           {/* Slide Counter */}
           <div className="text-center mt-8 text-sm text-gray-400">
-            {String(currentInspirationIndex + 1).padStart(2, '0')} / {String(travelImages.length - itemsPerPage + 1).padStart(2, '0')}
+            {String(currentInspirationIndex + 1).padStart(2, '0')} / {String(totalSlides).padStart(2, '0')}
           </div>
 
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-4">
-            {Array.from({ length: travelImages.length - itemsPerPage + 1 }).map((_, index: number) => (
+          {/* Dots Indicator - Shows all dots, scrollable if needed */}
+          <div className="flex justify-center gap-2 mt-4 flex-wrap px-4">
+            {Array.from({ length: totalSlides }).map((_, index: number) => (
               <button
                 key={index}
                 onClick={() => setCurrentInspirationIndex(index)}

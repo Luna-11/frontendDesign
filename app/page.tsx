@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-
 // Type definitions
 interface SlideDetails {
   bedrooms: string;
@@ -73,7 +72,12 @@ export default function Home() {
     }
   ];
 
+  // Travel inspiration images
+  const travelImages = ["picVer1.jpg", "picVer2.jpg", "picVer3.jpg", "picVer4.jpg","picVer5.jpg"];
+  
   const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [currentInspirationIndex, setCurrentInspirationIndex] = useState<number>(0);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(3);
 
   // Auto-slide functionality
   useEffect(() => {
@@ -82,6 +86,21 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(timer);
   }, [slides.length]);
+
+  // Handle responsive items per page
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1);
+      } else {
+        setItemsPerPage(3);
+      }
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const goToSlide = (index: number): void => {
     setCurrentSlide(index);
@@ -93,6 +112,26 @@ export default function Home() {
 
   const prevSlide = (): void => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  // Travel inspiration navigation
+  const nextInspiration = (): void => {
+    setCurrentInspirationIndex((prev) => 
+      (prev + 1) % (travelImages.length - itemsPerPage + 1)
+    );
+  };
+
+  const prevInspiration = (): void => {
+    setCurrentInspirationIndex((prev) => 
+      (prev - 1 + (travelImages.length - itemsPerPage + 1)) % (travelImages.length - itemsPerPage + 1)
+    );
+  };
+
+  // Get current visible images for travel inspiration
+  const getVisibleImages = (): string[] => {
+    const start = currentInspirationIndex;
+    const end = start + itemsPerPage;
+    return travelImages.slice(start, end);
   };
 
   return (
@@ -361,24 +400,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TRAVEL GALLERY */}
+      {/* TRAVEL INSPIRATION - Updated with Slideshow */}
       <section className="py-24 px-6 md:px-20">
         <h2 className="text-center text-4xl mb-12 tracking-wide">
           TRAVEL INSPIRATION
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {["picVer1.jpg", "picVer2.jpg", "picVer3.jpg"].map((img, i: number) => (
-            <div key={i} className="relative h-120 overflow-hidden cursor-pointer">
-              <Image
-                src={`/image/${img}`}
-                alt="Travel inspiration"
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover hover:scale-105 transition"
+        <div className="relative max-w-6xl mx-auto">
+          {/* Navigation Buttons */}
+          <button
+            onClick={prevInspiration}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition z-10"
+            aria-label="Previous images"
+            disabled={currentInspirationIndex === 0}
+            style={{ opacity: currentInspirationIndex === 0 ? 0.3 : 1 }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button
+            onClick={nextInspiration}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition z-10"
+            aria-label="Next images"
+            disabled={currentInspirationIndex >= travelImages.length - itemsPerPage}
+            style={{ opacity: currentInspirationIndex >= travelImages.length - itemsPerPage ? 0.3 : 1 }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Image Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-8 md:px-12">
+            {getVisibleImages().map((img, i: number) => (
+              <div 
+                key={i} 
+                className="relative h-120 overflow-hidden cursor-pointer rounded-lg shadow-lg transition-transform duration-500 hover:scale-105"
+              >
+                <Image
+                  src={`/image/${img}`}
+                  alt="Travel inspiration"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all duration-300 flex items-end justify-center pb-6 opacity-0 hover:opacity-100">
+                  <span className="bg-white/90 text-black px-4 py-2 text-sm tracking-wider">
+                    EXPLORE
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Slide Counter */}
+          <div className="text-center mt-8 text-sm text-gray-400">
+            {String(currentInspirationIndex + 1).padStart(2, '0')} / {String(travelImages.length - itemsPerPage + 1).padStart(2, '0')}
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-4">
+            {Array.from({ length: travelImages.length - itemsPerPage + 1 }).map((_, index: number) => (
+              <button
+                key={index}
+                onClick={() => setCurrentInspirationIndex(index)}
+                className={`w-2 h-2 rounded-full transition ${
+                  index === currentInspirationIndex ? "bg-black w-6" : "bg-black/30"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
               />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 

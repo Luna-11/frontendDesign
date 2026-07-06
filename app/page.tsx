@@ -309,7 +309,7 @@ export default function Home() {
 
         <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/50 bg-white">
           {/* Slideshow Container */}
-          <div className="relative h-112.5 md:h-[550px]">
+          <div className="relative h-112.5 md:h-135.5">
             {showcaseProjects.map((project, index) => (
               <div
                 key={project.id}

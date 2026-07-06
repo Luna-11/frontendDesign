@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 
-// Portfolio-focused content mapping flawlessly into the grid geometry
+// Frontend showcase content mapping flawlessly into the grid geometry
 const featuresGrid = [
   {
     type: "text",
     title: "Responsive Web Layouts",
-    description: "Crafting fluid, container-first web structures that deliver seamless user experiences across mobile, desktop, and ultra-wide screens.",
+    description: "Crafting fluid, container-first web structures that deliver seamless user experiences across mobile, desktop, and ultra-wide screens using modern CSS techniques.",
     bgClass: "bg-white",
     textColor: "text-gray-900"
   },
@@ -24,14 +24,14 @@ const featuresGrid = [
   {
     type: "text",
     title: "Interactive UI Micro-interactions",
-    description: "Bringing web interfaces to life using fine-tuned hardware-accelerated transitions, gesture controls, and purposeful scroll animations.",
+    description: "Bringing web interfaces to life using fine-tuned hardware-accelerated transitions, gesture controls, and purposeful scroll animations with Framer Motion.",
     bgClass: "bg-slate-500",
     textColor: "text-white"
   },
   {
     type: "text",
     title: "Performance & SEO Analytics",
-    description: "Optimizing Core Web Vitals to achieve lightning-fast performance scores, optimal server-side rendering, and production-grade search optimization.",
+    description: "Optimizing Core Web Vitals to achieve lightning-fast performance scores, optimal server-side rendering, and production-grade search optimization with Next.js.",
     bgClass: "bg-[#111625]",
     textColor: "text-white"
   },
@@ -39,13 +39,6 @@ const featuresGrid = [
     type: "image",
     image: "/image/pic3.jpg",
     alt: "Abstract tech graphics showcasing user workflow layout"
-  },
-  {
-    type: "text",
-    title: "Clean Semantic Codebases",
-    description: "Engineering scalable component design architectures built with clean, minimalist functional patterns and fully declarative design structures.",
-    bgClass: "bg-white",
-    textColor: "text-gray-900"
   }
 ];
 
@@ -57,9 +50,9 @@ export default function Home() {
     <main className="bg-[#fcfbfa] text-gray-900 min-h-screen font-sans antialiased">
       {/* Header Navigation */}
       <header className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between text-sm">
-        <div className="font-bold text-lg tracking-tight text-[#111625]">showcase</div>
+        <div className="font-bold text-lg tracking-tight text-[#111625]">frontend.showcase</div>
         <nav className="hidden md:flex items-center gap-8 text-gray-600">
-          <a href="#" className="hover:text-black font-medium">Work</a>
+          <a href="#" className="hover:text-black font-medium">Showcase</a>
           <a href="#" className="hover:text-black">Stack</a>
           <a href="#" className="hover:text-black">Architecture</a>
           <a href="#" className="hover:text-black">Performance</a>
@@ -67,9 +60,9 @@ export default function Home() {
           <a href="#" className="hover:text-black">Resources ▾</a>
         </nav>
         <div className="flex items-center gap-4">
-          <button className="text-gray-700 hover:text-black">Inquire</button>
+          <button className="text-gray-700 hover:text-black">Contact</button>
           <button className="bg-[#111625] text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-opacity-90 transition">
-            View GitHub
+            <a href="https://github.com/Luna-11">View on GitHub</a>
           </button>
         </div>
       </header>
@@ -77,24 +70,24 @@ export default function Home() {
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center relative">
         <span className="text-[10px] uppercase tracking-widest text-gray-400 bg-gray-100 px-2 py-1 rounded-md font-medium">
-          Portfolio Version 3.0
+          Frontend Showcase v3.0
         </span>
 
         <h1 className="text-5xl md:text-6xl font-normal tracking-tight text-[#111625] mt-6 max-w-2xl mx-auto leading-[1.15]">
-          Frontend Architect.<br />All In One Stack.
+          Modern Frontend<br />Engineering Excellence
         </h1>
 
         <p className="mt-4 text-sm text-gray-500 max-w-md mx-auto leading-relaxed">
-          Transforming Pixel-Perfect Mockups Into Production Reality.<br />
-          Explore High-Fidelity Interactive Web Environments.
+          Explore production-ready UI components,<br />
+          performance-optimized architectures, and design systems.
         </p>
 
         <div className="mt-8 flex items-center justify-center gap-3 text-xs">
           <button className="px-6 py-3 bg-[#111625] text-white rounded-full hover:bg-opacity-90 transition font-medium">
-            Explore Designs
+            Explore Showcase
           </button>
           <button className="px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-full hover:bg-gray-50 transition font-medium">
-            Review Stack
+            View Tech Stack
           </button>
         </div>
 
@@ -105,7 +98,7 @@ export default function Home() {
             <div className="w-6 h-6 rounded-full bg-slate-300 border border-white flex items-center justify-center text-[8px] font-bold text-slate-600">N9</div>
             <div className="w-6 h-6 rounded-full bg-slate-400 border border-white flex items-center justify-center text-[8px] font-bold text-white">TW</div>
           </div>
-          <span className="ml-1">★★★★★ Trusted code performance across multi-scale clients</span>
+          <span className="ml-1">★★★★★ Production-grade code with 99% Core Web Vitals score</span>
         </div>
       </section>
 
@@ -115,7 +108,7 @@ export default function Home() {
           <div className="absolute inset-0 z-0">
             <Image
               src="/image/pic9.jpg"
-              alt="Serene Landscape Environment"
+              alt="Modern workspace with coding setup"
               fill
               sizes="(max-w-1200px) 100vw, 1200px"
               className="object-cover object-center"
@@ -130,16 +123,16 @@ export default function Home() {
             {/* Card 1: Development Status Metrics */}
             <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl text-xs space-y-4 shadow-sm">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#111625] text-white flex items-center justify-center font-bold text-[10px]">P</div>
+                <div className="w-8 h-8 rounded-full bg-[#111625] text-white flex items-center justify-center font-bold text-[10px]">⚡</div>
                 <div>
-                  <div className="font-semibold text-gray-800">Build environment is ready!</div>
+                  <div className="font-semibold text-gray-800">Build Environment Ready</div>
                   <div className="text-[10px] text-gray-400">Production Mode Active</div>
                 </div>
               </div>
               <div className="space-y-1.5 text-gray-500">
                 <div className="flex justify-between"><span>Core Web Vitals</span><span className="font-medium text-emerald-600">99</span></div>
-                <div className="flex justify-between"><span>Layout Component Reusability</span><span className="font-medium text-gray-800">92%</span></div>
-                <div className="flex justify-between"><span>Accessibility Evaluation</span><span className="font-medium text-gray-800">AA</span></div>
+                <div className="flex justify-between"><span>Component Reusability</span><span className="font-medium text-gray-800">92%</span></div>
+                <div className="flex justify-between"><span>Accessibility Score</span><span className="font-medium text-gray-800">AA</span></div>
                 <div className="flex justify-between text-[#2d74ff] font-medium"><span>Hydration Performance</span><span>98ms</span></div>
               </div>
               <hr className="border-gray-100" />
@@ -174,11 +167,11 @@ export default function Home() {
 
             {/* Card 3: Layout Structure UI Card */}
             <div className="bg-[#4a3e3d]/60 backdrop-blur-md p-6 rounded-2xl text-white flex flex-col justify-between shadow-sm min-h-55">
-              <span className="text-[10px] tracking-wider text-gray-400 self-end">Layout Layout</span>
+              <span className="text-[10px] tracking-wider text-gray-400 self-end">Responsive</span>
               <div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-4xl font-light">100%</span>
-                  <span className="text-[10px] text-gray-400">Fluid Responsive</span>
+                  <span className="text-[10px] text-gray-400">Fluid Layout</span>
                 </div>
                 <div className="grid grid-cols-2 gap-y-1 gap-x-3 text-[10px] text-gray-300 mt-4 border-t border-white/10 pt-3">
                   <div>Flexbox / Grid</div>
@@ -233,7 +226,7 @@ export default function Home() {
                     </p>
                   </div>
                   <button className="text-xs font-medium underline tracking-wide text-left self-start opacity-90 hover:opacity-100">
-                    View System Specs
+                    View Implementation →
                   </button>
                 </div>
               );
@@ -260,16 +253,21 @@ export default function Home() {
         <div>
           <span className="text-[9px] uppercase tracking-widest text-gray-400">Core Mission</span>
           <h2 className="text-3xl font-normal text-[#111625] mt-2 tracking-tight leading-snug">
-            Empowering Digital Web Experiences Daily
+            Building Modern Web Experiences
           </h2>
         </div>
         <div className="space-y-4 text-gray-500 leading-relaxed font-light">
           <p className="font-normal text-gray-800">
-            Our goal is to create performant, beautifully interactive user journeys by providing scalable code execution structures and high-fidelity front-end design system principles.
+            Our showcase demonstrates production-ready frontend implementations using the latest web technologies to create performant, accessible, and beautiful user interfaces.
           </p>
           <p>
-            We believe in the transformative power of clean interface code, guiding design structures toward accessible standards. Through specialized system optimization patterns and minimalist UI components, we build client codebases intended to endure.
+            From responsive layouts to complex animations, we build scalable solutions that prioritize developer experience, performance optimization, and maintainable codebases. Each component is crafted with attention to detail and adherence to web standards.
           </p>
+          <div className="flex gap-4 pt-2">
+            <span className="bg-gray-100 px-3 py-1 rounded-full text-gray-700">Next.js 14</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full text-gray-700">TypeScript</span>
+            <span className="bg-gray-100 px-3 py-1 rounded-full text-gray-700">Tailwind CSS</span>
+          </div>
         </div>
       </section>
     </main>

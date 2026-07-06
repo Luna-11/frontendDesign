@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 // Portfolio-focused content mapping flawlessly into the grid geometry
 const featuresGrid = [
@@ -14,12 +13,12 @@ const featuresGrid = [
   },
   {
     type: "image",
-    image: "/image/pic1.jpg", 
+    image: "/image/pic1.jpg",
     alt: "Modern responsive web interface mockup"
   },
   {
     type: "image",
-    image: "/image/pic2.jpg", 
+    image: "/image/pic2.jpg",
     alt: "Clean minimal workspace showcasing code execution"
   },
   {
@@ -80,11 +79,11 @@ export default function Home() {
         <span className="text-[10px] uppercase tracking-widest text-gray-400 bg-gray-100 px-2 py-1 rounded-md font-medium">
           Portfolio Version 3.0
         </span>
-        
+
         <h1 className="text-5xl md:text-6xl font-normal tracking-tight text-[#111625] mt-6 max-w-2xl mx-auto leading-[1.15]">
           Frontend Architect.<br />All In One Stack.
         </h1>
-        
+
         <p className="mt-4 text-sm text-gray-500 max-w-md mx-auto leading-relaxed">
           Transforming Pixel-Perfect Mockups Into Production Reality.<br />
           Explore High-Fidelity Interactive Web Environments.
@@ -127,7 +126,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="relative z-10 grid md:grid-cols-3 gap-4 p-6 pt-40 md:pt-60 bg-gradient-to-t from-black/40 via-black/5 to-transparent">
+          <div className="relative z-10 grid md:grid-cols-3 gap-4 p-6 pt-40 md:pt-60 bg-linear-to-t from-black/40 via-black/5 to-transparent">
             {/* Card 1: Development Status Metrics */}
             <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl text-xs space-y-4 shadow-sm">
               <div className="flex items-center gap-3">
@@ -174,7 +173,7 @@ export default function Home() {
             </div>
 
             {/* Card 3: Layout Structure UI Card */}
-            <div className="bg-[#4a3e3d]/60 backdrop-blur-md p-6 rounded-2xl text-white flex flex-col justify-between shadow-sm min-h-[220px]">
+            <div className="bg-[#4a3e3d]/60 backdrop-blur-md p-6 rounded-2xl text-white flex flex-col justify-between shadow-sm min-h-55">
               <span className="text-[10px] tracking-wider text-gray-400 self-end">Layout Layout</span>
               <div>
                 <div className="flex items-baseline gap-2">
@@ -217,10 +216,9 @@ export default function Home() {
 
       {/* Mosaic Content Grid */}
       <section className="max-w-5xl mx-auto px-6 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[250px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-62.5">
           {featuresGrid.map((block, index) => {
-            // Changed from 'let' to 'const' to satisfy the eslint prefer-const rule
-            const layoutClass = "md:col-span-2"; 
+            const layoutClass = "md:col-span-2";
 
             if (block.type === "text") {
               return (

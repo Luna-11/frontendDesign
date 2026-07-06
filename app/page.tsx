@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 
 // Frontend showcase content mapping flawlessly into the grid geometry
 const featuresGrid = [
@@ -42,10 +43,57 @@ const featuresGrid = [
   }
 ];
 
+// Sample Projects Slideshow Data
+const showcaseProjects = [
+  {
+    id: 1,
+    title: "Travel & Tour Platform",
+    description: "Immersive travel booking experience with dynamic itineraries and destination showcases",
+    image: "/image/travel1.jpg",
+    category: "Travel & Tourism"
+  },
+  {
+    id: 2,
+    title: "Event Planner Dashboard",
+    description: "Comprehensive event management system with real-time collaboration and scheduling",
+    image: "/image/event-planner.jpg",
+    category: "Event Management"
+  },
+  {
+    id: 3,
+    title: "Adventure Travel Explorer",
+    description: "Curated adventure tours with interactive maps and personalized recommendations",
+    image: "/image/travel2.jpg",
+    category: "Travel & Tourism"
+  }
+];
+
 // Tech stack / Client logo ticker names
 const techStackLogos = ["NEXT.JS", "TAILWIND CSS", "TYPESCRIPT", "FRAMER MOTION", "ESLINT", "GIT", "Vercel"];
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % showcaseProjects.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
+
+  const goToPrevious = () => {
+    setCurrentSlide((prev) => (prev - 1 + showcaseProjects.length) % showcaseProjects.length);
+  };
+
+  const goToNext = () => {
+    setCurrentSlide((prev) => (prev + 1) % showcaseProjects.length);
+  };
+
   return (
     <main className="bg-[#fcfbfa] text-gray-900 min-h-screen font-sans antialiased">
       {/* Header Navigation */}
@@ -208,7 +256,7 @@ export default function Home() {
       </section>
 
       {/* Mosaic Content Grid */}
-      <section className="max-w-5xl mx-auto px-6 pb-24">
+      <section className="max-w-5xl mx-auto px-6 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-62.5">
           {featuresGrid.map((block, index) => {
             const layoutClass = "md:col-span-2";
@@ -244,6 +292,102 @@ export default function Home() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* SLIDESHOW SECTION - Featured Projects (Now under Precision UI Engineering) */}
+      <section className="max-w-6xl mx-auto px-6 pb-24">
+        <div className="text-center mb-12">
+          <span className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Featured Implementations</span>
+          <h3 className="text-3xl font-normal text-[#111625] mt-3 tracking-tight">
+            Sample Frontend Designs
+          </h3>
+          <p className="text-gray-400 text-xs mt-3 leading-relaxed max-w-xl mx-auto">
+            Real-world applications showcasing our frontend engineering capabilities
+          </p>
+        </div>
+
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/50 bg-white">
+          {/* Slideshow Container */}
+          <div className="relative h-112.5 md:h-[550px]">
+            {showcaseProjects.map((project, index) => (
+              <div
+                key={project.id}
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === currentSlide
+                    ? 'opacity-100 translate-x-0'
+                    : 'opacity-0 translate-x-10'
+                  }`}
+              >
+                <div className="relative w-full h-full">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                  />
+                  {/* Overlay gradient for text readability */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+
+                  {/* Project Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
+                    <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[10px] font-medium tracking-wider uppercase mb-4">
+                      {project.category}
+                    </span>
+                    <h3 className="text-3xl md:text-4xl font-medium tracking-tight mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-gray-200 max-w-lg">
+                      {project.description}
+                    </p>
+                    <button className="mt-4 px-6 py-2 bg-white text-black rounded-full text-xs font-medium hover:bg-opacity-90 transition">
+                      View Project →
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={goToPrevious}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+            aria-label="Previous slide"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button
+            onClick={goToNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+            aria-label="Next slide"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            {showcaseProjects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide
+                    ? 'bg-white w-8'
+                    : 'bg-white/50 hover:bg-white/80'
+                  }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Project Counter */}
+        <div className="text-center mt-4 text-xs text-gray-400">
+          {currentSlide + 1} / {showcaseProjects.length} • Sample Frontend Projects
         </div>
       </section>
 

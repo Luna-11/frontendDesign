@@ -112,7 +112,7 @@ export default function Home() {
 
       {/* Floating Mockup Dashboard Section */}
       <section className="max-w-6xl mx-auto px-6 pb-20">
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/50 min-h-[450px] bg-slate-100">
+        <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-gray-200/50 min-h-112.5 bg-slate-100">
           <div className="absolute inset-0 z-0">
             <Image
               src="/image/pic9.jpg"
@@ -157,7 +157,7 @@ export default function Home() {
             </div>
 
             {/* Card 2: Interactive Animations UI Card */}
-            <div className="bg-[#111625]/80 backdrop-blur-md p-6 rounded-2xl text-white flex flex-col justify-between shadow-sm min-h-[220px]">
+            <div className="bg-[#111625]/80 backdrop-blur-md p-6 rounded-2xl text-white flex flex-col justify-between shadow-sm min-h-55">
               <span className="text-[10px] tracking-wider text-gray-400 self-end">Animations</span>
               <div>
                 <div className="flex items-baseline gap-2">

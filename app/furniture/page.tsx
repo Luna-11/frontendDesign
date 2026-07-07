@@ -6,17 +6,16 @@ import { useState } from "react";
 // Furniture Categories
 const categories = ["All", "Chairs", "Tables", "New Arrivals", "Best Sellers"];
 
-// Chair Products - Only 5 items total
+// Chair Products - Only 3 items total
 const chairProducts = [
     {
         id: 1,
         name: "Windsor Dining Chair",
         category: "Chairs",
         price: "$899",
-        image: "/image/fun3.jpg",
+        image: "/image/funV1.jpg",
         isNew: true,
         isBestSeller: true,
-        isOnSale: false,
         material: "Oak Wood"
     },
     {
@@ -24,10 +23,9 @@ const chairProducts = [
         name: "Cabriole Leg Armchair",
         category: "Chairs",
         price: "$1,299",
-        image: "/image/fun3.jpg",
+        image: "/image/funV1.jpg",
         isNew: false,
         isBestSeller: true,
-        isOnSale: false,
         material: "Walnut"
     },
     {
@@ -35,37 +33,14 @@ const chairProducts = [
         name: "Ladder Back Side Chair",
         category: "Chairs",
         price: "$649",
-        image: "/image/fun3.jpg",
+        image: "/image/funV2.jpg",
         isNew: true,
         isBestSeller: false,
-        isOnSale: false,
         material: "Cherry Wood"
-    },
-    {
-        id: 4,
-        name: "Club Accent Chair",
-        category: "Chairs",
-        price: "$1,899",
-        image: "/image/fun3.jpg",
-        isNew: false,
-        isBestSeller: false,
-        isOnSale: true,
-        material: "Leather & Mahogany"
-    },
-    {
-        id: 5,
-        name: "Queen Anne Side Chair",
-        category: "Chairs",
-        price: "$749",
-        image: "/image/fun3.jpg",
-        isNew: false,
-        isBestSeller: true,
-        isOnSale: false,
-        material: "Mahogany"
     }
 ];
 
-// Table Products - Only 5 items total
+// Table Products - Only 3 items total
 const tableProducts = [
     {
         id: 6,
@@ -75,7 +50,6 @@ const tableProducts = [
         image: "/image/fun2.jpg",
         isNew: true,
         isBestSeller: true,
-        isOnSale: false,
         material: "Oak"
     },
     {
@@ -86,7 +60,6 @@ const tableProducts = [
         image: "/image/fun2.jpg",
         isNew: false,
         isBestSeller: true,
-        isOnSale: false,
         material: "Mahogany"
     },
     {
@@ -97,50 +70,27 @@ const tableProducts = [
         image: "/image/funV1.jpg",
         isNew: false,
         isBestSeller: false,
-        isOnSale: false,
         material: "Walnut"
-    },
-    {
-        id: 9,
-        name: "Pedestal Round Table",
-        category: "Tables",
-        price: "$1,299",
-        image: "/image/fun2.jpg",
-        isNew: true,
-        isBestSeller: false,
-        isOnSale: true,
-        material: "Cherry"
-    },
-    {
-        id: 10,
-        name: "Butler's Tray Table",
-        category: "Tables",
-        price: "$899",
-        image: "/image/fun2.jpg",
-        isNew: false,
-        isBestSeller: false,
-        isOnSale: false,
-        material: "Teak"
     }
 ];
 
-// Combined product list - Limited to 5 items total
+// Combined product list - Limited to 3 items total
 const allProducts = [...chairProducts, ...tableProducts];
 
 export default function FurnitureStore() {
     const [activeCategory, setActiveCategory] = useState("All");
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    // Filter products by category - Limit to 5 items
+    // Filter products by category - Limit to 3 items
     const getFilteredProducts = () => {
         let products = [];
 
         if (activeCategory === "All") {
-            products = allProducts.slice(0, 5); // Only show first 5 items
+            products = allProducts.slice(0, 3); // Only show first 3 items
         } else if (activeCategory === "Chairs") {
-            products = chairProducts.slice(0, 5);
+            products = chairProducts.slice(0, 3);
         } else if (activeCategory === "Tables") {
-            products = tableProducts.slice(0, 5);
+            products = tableProducts.slice(0, 3);
         } else {
             products = allProducts
                 .filter(p => {
@@ -148,7 +98,7 @@ export default function FurnitureStore() {
                     if (activeCategory === "Best Sellers") return p.isBestSeller;
                     return p.category === activeCategory;
                 })
-                .slice(0, 5); // Limit to 5 items
+                .slice(0, 3); // Limit to 3 items
         }
 
         return products;
@@ -232,6 +182,8 @@ export default function FurnitureStore() {
                             fill
                             className="object-cover"
                             priority
+                            loading="eager"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                         />
                     </div>
                 </div>
@@ -245,8 +197,8 @@ export default function FurnitureStore() {
                             key={category}
                             onClick={() => setActiveCategory(category)}
                             className={`px-4 py-2 text-sm uppercase tracking-wider transition ${activeCategory === category
-                                    ? "text-[#d4c5b2] border-b-2 border-[#d4c5b2]"
-                                    : "text-[#6b5c4e] hover:text-[#d4c5b2]"
+                                ? "text-[#d4c5b2] border-b-2 border-[#d4c5b2]"
+                                : "text-[#6b5c4e] hover:text-[#d4c5b2]"
                                 }`}
                         >
                             {category}
@@ -255,10 +207,10 @@ export default function FurnitureStore() {
                 </div>
             </section>
 
-            {/* Product Grid - Maximum 5 items */}
+            {/* Product Grid - Maximum 3 items */}
             <section className="max-w-7xl mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                    {filteredProducts.slice(0, 5).map((product) => (
+                    {filteredProducts.slice(0, 3).map((product) => (
                         <div key={product.id} className="group cursor-pointer">
                             <div className="relative aspect-[4/5] bg-[#1a1410] rounded-lg overflow-hidden mb-4 border border-[#2a2420]">
                                 <Image
@@ -266,18 +218,14 @@ export default function FurnitureStore() {
                                     alt={product.name}
                                     fill
                                     className="object-cover group-hover:scale-105 transition duration-500"
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                 />
                                 {product.isNew && (
                                     <span className="absolute top-4 left-4 bg-[#d4c5b2] px-3 py-1 text-[10px] uppercase tracking-wider text-[#0a0a0a] shadow-sm">
                                         New
                                     </span>
                                 )}
-                                {product.isOnSale && (
-                                    <span className="absolute top-4 left-4 bg-[#c0392b] px-3 py-1 text-[10px] uppercase tracking-wider text-[#f5f0eb] shadow-sm">
-                                        Sale
-                                    </span>
-                                )}
-                                {product.isBestSeller && !product.isNew && !product.isOnSale && (
+                                {product.isBestSeller && !product.isNew && (
                                     <span className="absolute top-4 left-4 bg-[#d4c5b2] px-3 py-1 text-[10px] uppercase tracking-wider text-[#0a0a0a] shadow-sm">
                                         Best Seller
                                     </span>
@@ -296,7 +244,7 @@ export default function FurnitureStore() {
                     ))}
                 </div>
 
-                {/* Show message if less than 5 items */}
+                {/* Show message if less than 3 items */}
                 {filteredProducts.length === 0 && (
                     <div className="text-center py-12">
                         <p className="text-[#6b5c4e] text-sm">No products found in this category.</p>
@@ -316,7 +264,7 @@ export default function FurnitureStore() {
                     </button>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {/* Featured Items - Max 5 featured items */}
+                    {/* Featured Items */}
                     <div className="group cursor-pointer">
                         <div className="relative aspect-[4/3] bg-[#1a1410] rounded-lg overflow-hidden mb-4 border border-[#2a2420]">
                             <Image
@@ -324,6 +272,7 @@ export default function FurnitureStore() {
                                 alt="Classic Dining Chair"
                                 fill
                                 className="object-cover group-hover:scale-105 transition duration-500"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             />
                         </div>
                         <h3 className="text-sm uppercase tracking-wide text-[#d4c5b2] group-hover:text-[#c4b5a2] transition">
@@ -338,6 +287,7 @@ export default function FurnitureStore() {
                                 alt="Armchair"
                                 fill
                                 className="object-cover group-hover:scale-105 transition duration-500"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             />
                         </div>
                         <h3 className="text-sm uppercase tracking-wide text-[#d4c5b2] group-hover:text-[#c4b5a2] transition">
@@ -352,6 +302,7 @@ export default function FurnitureStore() {
                                 alt="Dining Table"
                                 fill
                                 className="object-cover group-hover:scale-105 transition duration-500"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             />
                         </div>
                         <h3 className="text-sm uppercase tracking-wide text-[#d4c5b2] group-hover:text-[#c4b5a2] transition">
@@ -366,6 +317,7 @@ export default function FurnitureStore() {
                                 alt="Console Table"
                                 fill
                                 className="object-cover group-hover:scale-105 transition duration-500"
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                             />
                         </div>
                         <h3 className="text-sm uppercase tracking-wide text-[#d4c5b2] group-hover:text-[#c4b5a2] transition">

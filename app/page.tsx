@@ -49,7 +49,7 @@ const showcaseProjects = [
     id: 1,
     title: "Event Planner Dashboard",
     description: "Comprehensive event management system with real-time collaboration and scheduling",
-    image: "/image/pic4.jpg",
+    image: "/image/wed1.jpg",
     category: "Event Management",
     link: "/planner"  // Link to planner page
   },

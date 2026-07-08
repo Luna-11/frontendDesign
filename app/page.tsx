@@ -43,28 +43,39 @@ const featuresGrid = [
   }
 ];
 
-// Sample Projects Slideshow Data
+// Sample Projects Slideshow Data - Now linking to other pages
 const showcaseProjects = [
   {
     id: 1,
-    title: "Travel & Tour Platform",
-    description: "Immersive travel booking experience with dynamic itineraries and destination showcases",
-    image: "/image/travel1.jpg",
-    category: "Travel & Tourism"
+    title: "Event Planner Dashboard",
+    description: "Comprehensive event management system with real-time collaboration and scheduling",
+    image: "/image/pic4.jpg",
+    category: "Event Management",
+    link: "/planner"  // Link to planner page
   },
   {
     id: 2,
-    title: "Event Planner Dashboard",
-    description: "Comprehensive event management system with real-time collaboration and scheduling",
-    image: "/image/event-planner.jpg",
-    category: "Event Management"
+    title: "Modern Furniture Showroom",
+    description: "Elegant furniture showcase with 3D product views and immersive shopping experience",
+    image: "/image/fun1.jpg",
+    category: "E-Commerce & Design",
+    link: "/furniture"  // Link to furniture page
   },
   {
     id: 3,
+    title: "Travel & Tour Platform",
+    description: "Immersive travel booking experience with dynamic itineraries and destination showcases",
+    image: "/image/fun1.jpg",
+    category: "Travel & Tourism",
+    link: "/travel"  // Link to travel page
+  },
+  {
+    id: 4,
     title: "Adventure Travel Explorer",
     description: "Curated adventure tours with interactive maps and personalized recommendations",
-    image: "/image/travel2.jpg",
-    category: "Travel & Tourism"
+    image: "/image/pic9.jpg",
+    category: "Travel & Tourism",
+    link: "/travel/adventure"  // Link to adventure page
   }
 ];
 
@@ -98,12 +109,9 @@ export default function Home() {
     <main className="bg-[#fcfbfa] text-gray-900 min-h-screen font-sans antialiased">
       {/* Header Navigation */}
       <header className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between text-sm">
-        <div className="font-bold text-lg tracking-tight text-[#111625]">frontend.showcase</div>
+        <div className="font-bold text-lg tracking-tight text-[#111625]">Pann Frontend Only</div>
         <nav className="hidden md:flex items-center gap-8 text-gray-600">
-          <a href="#" className="hover:text-black font-medium">Showcase</a>
-          <a href="#" className="hover:text-black">Stack</a>
-          <a href="#" className="hover:text-black">Architecture</a>
-          <a href="#" className="hover:text-black">Performance</a>
+          <a href="#" className="hover:text-black font-medium">Showcases</a>
           <a href="#" className="hover:text-black">Case Studies</a>
           <a href="#" className="hover:text-black">Resources ▾</a>
         </nav>
@@ -116,9 +124,9 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center relative">
+      <section className="max-w-3xl mx-auto px-6 pt-14 pb-12 text-center relative">
         <span className="text-[10px] uppercase tracking-widest text-gray-400 bg-gray-100 px-2 py-1 rounded-md font-medium">
-          Frontend Showcase v3.0
+          Frontend Showcase
         </span>
 
         <h1 className="text-5xl md:text-6xl font-normal tracking-tight text-[#111625] mt-6 max-w-2xl mx-auto leading-[1.15]">
@@ -295,15 +303,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SLIDESHOW SECTION - Featured Projects (Now under Precision UI Engineering) */}
+      {/* UPDATED SLIDESHOW SECTION - Featured Projects with Page Links */}
       <section className="max-w-6xl mx-auto px-6 pb-24">
         <div className="text-center mb-12">
           <span className="text-[10px] uppercase tracking-widest text-gray-400 font-semibold">Featured Implementations</span>
           <h3 className="text-3xl font-normal text-[#111625] mt-3 tracking-tight">
-            Sample Frontend Designs
+            Explore Our Projects
           </h3>
           <p className="text-gray-400 text-xs mt-3 leading-relaxed max-w-xl mx-auto">
-            Real-world applications showcasing our frontend engineering capabilities
+            Click on any project to see the full implementation
           </p>
         </div>
 
@@ -318,33 +326,46 @@ export default function Home() {
                     : 'opacity-0 translate-x-10'
                   }`}
               >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 1200px"
-                  />
-                  {/* Overlay gradient for text readability */}
-                  <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+                {/* Make the entire slide clickable */}
+                <a href={project.link} className="block w-full h-full relative cursor-pointer group">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 1200px"
+                    />
+                    {/* Overlay gradient for text readability */}
+                    <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent transition-opacity duration-500 group-hover:from-black/80" />
 
-                  {/* Project Info Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
-                    <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[10px] font-medium tracking-wider uppercase mb-4">
-                      {project.category}
-                    </span>
-                    <h3 className="text-3xl md:text-4xl font-medium tracking-tight mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-gray-200 max-w-lg">
-                      {project.description}
-                    </p>
-                    <button className="mt-4 px-6 py-2 bg-white text-black rounded-full text-xs font-medium hover:bg-opacity-90 transition">
-                      View Project →
-                    </button>
+                    {/* Project Info Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
+                      <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-[10px] font-medium tracking-wider uppercase mb-4">
+                        {project.category}
+                      </span>
+                      <h3 className="text-3xl md:text-4xl font-medium tracking-tight mb-2">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-200 max-w-lg">
+                        {project.description}
+                      </p>
+                      <div className="mt-4 flex items-center gap-3">
+                        <span className="px-6 py-2 bg-white text-black rounded-full text-xs font-medium hover:bg-opacity-90 transition group-hover:bg-white/90">
+                          View Project →
+                        </span>
+                        <span className="text-xs text-white/60 group-hover:text-white/80 transition">
+                          Page {project.link}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Hover indicator */}
+                    <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-sm text-white px-3 py-1 rounded-full text-[10px] opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      Click to explore
+                    </div>
                   </div>
-                </div>
+                </a>
               </div>
             ))}
           </div>
@@ -352,7 +373,7 @@ export default function Home() {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110 z-10"
             aria-label="Previous slide"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -361,7 +382,7 @@ export default function Home() {
           </button>
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110 z-10"
             aria-label="Next slide"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -370,7 +391,7 @@ export default function Home() {
           </button>
 
           {/* Dots Indicator */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
             {showcaseProjects.map((_, index) => (
               <button
                 key={index}
@@ -385,9 +406,23 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Project Counter */}
-        <div className="text-center mt-4 text-xs text-gray-400">
-          {currentSlide + 1} / {showcaseProjects.length} • Sample Frontend Projects
+        {/* Project Counter and Quick Links */}
+        <div className="flex flex-col md:flex-row items-center justify-between mt-4 text-xs text-gray-400 gap-2">
+          <span>
+            {currentSlide + 1} / {showcaseProjects.length} • Featured Projects
+          </span>
+          <div className="flex gap-4">
+            {showcaseProjects.map((project, index) => (
+              <button
+                key={project.id}
+                onClick={() => goToSlide(index)}
+                className={`hover:text-gray-700 transition ${index === currentSlide ? 'text-gray-700 font-medium' : ''
+                  }`}
+              >
+                {project.title.split(' ').slice(0, 2).join(' ')}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 

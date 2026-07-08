@@ -76,6 +76,45 @@ const tableProducts = [
 // Combined product list - Limited to 3 items total
 const allProducts = [...chairProducts, ...tableProducts];
 
+// Visionary Section Data
+const visionaryFeatures = [
+    {
+        id: 1,
+        title: "ELEVATING COMFORT WITH EVERY CURVE",
+        description: "Every piece in our collection is meticulously crafted to provide unparalleled comfort while maintaining aesthetic excellence.",
+        image: "/image/fun1.jpg",
+        link: "/approach"
+    },
+    {
+        id: 2,
+        title: "OUR APPROACH",
+        description: "We combine traditional craftsmanship with modern innovation to create furniture that stands the test of time.",
+        image: "/image/fun2.jpg",
+        link: "/approach"
+    },
+    {
+        id: 3,
+        title: "OUR TECHNOLOGY",
+        description: "Advanced manufacturing techniques ensure precision and durability in every piece we create.",
+        image: "/image/fun3.jpg",
+        link: "/technology"
+    },
+    {
+        id: 4,
+        title: "OUR STORY",
+        description: "Founded on a passion for design excellence, we've been creating timeless pieces for generations.",
+        image: "/image/fun4.jpg",
+        link: "/story"
+    },
+    {
+        id: 5,
+        title: "OUR DESIGN TEAM",
+        description: "Meet the creative minds behind our collections—artisans dedicated to perfecting form and function.",
+        image: "/image/funV1.jpg",
+        link: "/team"
+    }
+];
+
 export default function FurnitureStore() {
     const [activeCategory, setActiveCategory] = useState("All");
 
@@ -155,6 +194,147 @@ export default function FurnitureStore() {
                 </div>
             </section>
 
+            {/* NEW: Visionary Section */}
+            <section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
+                <div className="text-center mb-12">
+                    <span className="text-xs uppercase tracking-[0.3em] text-[#a8947e] font-light">Visionary</span>
+                    <h2 className="text-3xl md:text-4xl font-light text-[#d4c5b2] mt-3 tracking-tight">
+                        Where Form <span className="text-[#a8947e]">and Function</span> Unite
+                    </h2>
+                    <p className="text-sm text-[#d4c5b2] mt-3 max-w-2xl mx-auto leading-relaxed">
+                        Discover the perfect harmony of aesthetic beauty and practical design in every piece we create.
+                    </p>
+                </div>
+
+                {/* Visionary Grid - 5 items with images and labels */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {/* First item takes 2 columns on md+ screens */}
+                    <div className="md:col-span-2 relative group cursor-pointer">
+                        <div className="relative aspect-4/3 md:aspect-2/1 rounded-lg overflow-hidden border border-[#2a2420] bg-[#1a1410]">
+                            <Image
+                                src="/image/fun1.jpg"
+                                alt="ELEVATING COMFORT WITH EVERY CURVE"
+                                fill
+                                className="object-cover group-hover:scale-105 transition duration-700"
+                                sizes="(max-width: 768px) 100vw, 66vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60" />
+
+                            {/* Overlay Text */}
+                            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                                <span className="text-[10px] uppercase tracking-[0.2em] text-[#d4c5b2]/70">Feature</span>
+                                <h3 className="text-xl md:text-2xl font-light text-[#d4c5b2] mt-1">
+                                    ELEVATING COMFORT<br />WITH EVERY CURVE
+                                </h3>
+                                <button className="mt-3 text-xs text-[#d4c5b2] hover:text-[#c4b5a2] transition">
+                                    EXPLORE →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Second item */}
+                    <div className="relative group cursor-pointer">
+                        <div className="relative aspect-4/3 rounded-lg overflow-hidden border border-[#2a2420] bg-[#1a1410]">
+                            <Image
+                                src="/image/fun2.jpg"
+                                alt="OUR APPROACH"
+                                fill
+                                className="object-cover group-hover:scale-105 transition duration-700"
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60" />
+
+                            {/* Overlay Text */}
+                            <div className="absolute bottom-0 left-0 right-0 p-6">
+                                <span className="text-[10px] uppercase tracking-[0.2em] text-[#d4c5b2]/70">Learn More</span>
+                                <h3 className="text-lg font-light text-[#d4c5b2] mt-1">
+                                    OUR APPROACH
+                                </h3>
+                                <button className="mt-2 text-xs text-[#d4c5b2] hover:text-[#c4b5a2] transition">
+                                    EXPLORE →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Third item */}
+                    <div className="relative group cursor-pointer">
+                        <div className="relative aspect-4/3 rounded-lg overflow-hidden border border-[#2a2420] bg-[#1a1410]">
+                            <Image
+                                src="/image/fun3.jpg"
+                                alt="OUR TECHNOLOGY"
+                                fill
+                                className="object-cover group-hover:scale-105 transition duration-700"
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60" />
+
+                            {/* Overlay Text */}
+                            <div className="absolute bottom-0 left-0 right-0 p-6">
+                                <span className="text-[10px] uppercase tracking-[0.2em] text-[#d4c5b2]/70">Innovation</span>
+                                <h3 className="text-lg font-light text-[#d4c5b2] mt-1">
+                                    OUR TECHNOLOGY
+                                </h3>
+                                <button className="mt-2 text-xs text-[#d4c5b2] hover:text-[#c4b5a2] transition">
+                                    EXPLORE →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Fourth item */}
+                    <div className="relative group cursor-pointer">
+                        <div className="relative aspect-4/3 rounded-lg overflow-hidden border border-[#2a2420] bg-[#1a1410]">
+                            <Image
+                                src="/image/fun4.jpg"
+                                alt="OUR STORY"
+                                fill
+                                className="object-cover group-hover:scale-105 transition duration-700"
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60" />
+
+                            {/* Overlay Text */}
+                            <div className="absolute bottom-0 left-0 right-0 p-6">
+                                <span className="text-[10px] uppercase tracking-[0.2em] text-[#d4c5b2]/70">Heritage</span>
+                                <h3 className="text-lg font-light text-[#d4c5b2] mt-1">
+                                    OUR STORY
+                                </h3>
+                                <button className="mt-2 text-xs text-[#d4c5b2] hover:text-[#c4b5a2] transition">
+                                    EXPLORE →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Fifth item */}
+                    <div className="relative group cursor-pointer">
+                        <div className="relative aspect-4/3 rounded-lg overflow-hidden border border-[#2a2420] bg-[#1a1410]">
+                            <Image
+                                src="/image/funV1.jpg"
+                                alt="OUR DESIGN TEAM"
+                                fill
+                                className="object-cover group-hover:scale-105 transition duration-700"
+                                sizes="(max-width: 768px) 100vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60" />
+
+                            {/* Overlay Text */}
+                            <div className="absolute bottom-0 left-0 right-0 p-6">
+                                <span className="text-[10px] uppercase tracking-[0.2em] text-[#d4c5b2]/70">Team</span>
+                                <h3 className="text-lg font-light text-[#d4c5b2] mt-1">
+                                    OUR DESIGN TEAM
+                                </h3>
+                                <button className="mt-2 text-xs text-[#d4c5b2] hover:text-[#c4b5a2] transition">
+                                    EXPLORE →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Category Filters */}
             <section className="max-w-7xl mx-auto px-6 py-8">
                 <div className="flex flex-wrap gap-4 border-b border-[#2a2420] pb-6">
@@ -163,8 +343,8 @@ export default function FurnitureStore() {
                             key={category}
                             onClick={() => setActiveCategory(category)}
                             className={`px-4 py-2 text-sm uppercase tracking-wider transition ${activeCategory === category
-                                    ? "text-[#d4c5b2] border-b-2 border-[#d4c5b2]"
-                                    : "text-[#a8947e] hover:text-[#d4c5b2]"
+                                ? "text-[#d4c5b2] border-b-2 border-[#d4c5b2]"
+                                : "text-[#a8947e] hover:text-[#d4c5b2]"
                                 }`}
                         >
                             {category}

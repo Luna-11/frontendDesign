@@ -65,7 +65,7 @@ const showcaseProjects = [
     id: 3,
     title: "Travel & Tour Platform",
     description: "Immersive travel booking experience with dynamic itineraries and destination showcases",
-    image: "/image/fun1.jpg",
+    image: "/image/pic4.jpg",
     category: "Travel & Tourism",
     link: "/travel"  // Link to travel page
   },
@@ -116,7 +116,7 @@ export default function Home() {
           <a href="#" className="hover:text-black">Resources ▾</a>
         </nav>
         <div className="flex items-center gap-4">
-          <button className="text-gray-700 hover:text-black">Contact</button>
+          <button className="text-gray-700 hover:text-black"> <a href="#">Portfolio</a></button>
           <button className="bg-[#111625] text-white px-4 py-2 rounded-full text-xs font-medium hover:bg-opacity-90 transition">
             <a href="https://github.com/Luna-11">View on GitHub</a>
           </button>
@@ -147,15 +147,6 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Social Proof / Metrics Badges */}
-        <div className="mt-6 flex items-center justify-center gap-2 text-xs text-gray-400">
-          <div className="flex -space-x-2">
-            <div className="w-6 h-6 rounded-full bg-slate-200 border border-white flex items-center justify-center text-[8px] font-bold text-slate-500">TS</div>
-            <div className="w-6 h-6 rounded-full bg-slate-300 border border-white flex items-center justify-center text-[8px] font-bold text-slate-600">N9</div>
-            <div className="w-6 h-6 rounded-full bg-slate-400 border border-white flex items-center justify-center text-[8px] font-bold text-white">TW</div>
-          </div>
-          <span className="ml-1">★★★★★ Production-grade code with 99% Core Web Vitals score</span>
-        </div>
       </section>
 
       {/* Floating Mockup Dashboard Section */}
